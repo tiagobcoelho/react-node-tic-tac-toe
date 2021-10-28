@@ -1,0 +1,16 @@
+.squares {
+  background: #272727;
+  border: none;
+  height: 100px;
+  width: 100px;
+  font-size: 20px;
+  cursor: pointer;
+  outline: none;
+}
+
+.X {
+  color: $primary-color
+}
+.O {
+  color: $white;
+}
