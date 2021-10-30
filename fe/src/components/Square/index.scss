@@ -1,16 +1,19 @@
-.squares {
-  background: #272727;
+.square {
+  background-color: $secondary-color;
+  border-radius: $border-rounded;
+  height: 80px;
+  width: 80px;
   border: none;
-  height: 100px;
-  width: 100px;
-  font-size: 20px;
   cursor: pointer;
   outline: none;
-}
+  @include transition;
 
-.X {
-  color: $primary-color
-}
-.O {
-  color: $white;
+  @include breakpoint('md') {
+    height: 120px;
+    width: 120px;
+  }
+
+  &:hover:not([disabled]) {
+    background-color: $secondary-strong-color;
+  }
 }

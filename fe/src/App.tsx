@@ -1,27 +1,44 @@
-import React from 'react';
-import './styles/App.scss';
-import GameSelector  from './partials/GameSelector';
-import PlayersSelector from './partials/PlayersSelector';
+import React, { useState } from 'react';
+
+// Redux imports
 import { useSelector } from 'react-redux'
 import { RootState } from './redux/store';
 import { GameState } from './redux/game';
-import Game from './partials/Game';
+
+// Component import
 import Modal from './components/Modal';
+
+// Partials imports
+import WelcomeScreen from './partials/WelcomeScreen';
+import PlayersSelector from './partials/PlayersSelector';
+import GameSelector  from './partials/GameSelector';
+import Game from './partials/Game';
+
 
 const App: React.FC = () => {
 
-  const players = useSelector((state: RootState)=> state.players)
-  const game = useSelector((state: RootState): GameState => state.game)
+  // Redux state
+  const players = useSelector((state: RootState)=> state.players);
+  const game = useSelector((state: RootState): GameState => state.game);
+
+  // Local State
+  const [welcomeScreen, setWelcomeScreen] = useState(true);
 
   return (
-    <div className="App">
+    <div className="app-container">
+
+      {welcomeScreen && (
+        <WelcomeScreen onClick={() => setWelcomeScreen(false)}/>
+      )}
+
+      {!players.length && !welcomeScreen && (
+        <PlayersSelector />
+      )}
+
      {!game.isGameChosen && players.length > 0 && (
        <GameSelector />
      )}
 
-     {!players.length &&  (
-       <PlayersSelector />
-     )}
 
     {players.length > 0  && game.isGameChosen  &&(
      <Modal>
@@ -30,6 +47,6 @@ const App: React.FC = () => {
     )}
     </div>
   );
-}
+};
 
 export default App;

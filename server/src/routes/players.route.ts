@@ -10,8 +10,8 @@ const router = express.Router();
 export type Player = {
   id: number,
   name: string,
-  winsCount: number
-}
+  winsCount: number,
+};
 
 
 /**
@@ -19,7 +19,7 @@ export type Player = {
  * ------------------------------------------------------------------
  */
 
-let players: Player[] = []
+let players: Player[] = [];
 
 
 /**
@@ -29,19 +29,19 @@ let players: Player[] = []
 
 router.post('/', (req: Request, res: Response) => {
   const playersNames = req.body;
-  const tempPlayers: Player[] = []
+  const tempPlayers: Player[] = [];
 
   playersNames.map((playerName: string, i: number) => {
     const p = {
       id: i,
       name: playerName,
       winsCount: 0
-    }
-    tempPlayers.push(p)
-  })
-  players = tempPlayers
-  res.status(200).send(players)
-})
+    };
+    tempPlayers.push(p);
+  });
+  players = tempPlayers;
+  res.status(200).send(players);
+});
 
 
 /**
@@ -50,16 +50,16 @@ router.post('/', (req: Request, res: Response) => {
  */
 
 router.post('/increment', (req: Request, res: Response) => {
-  const { id }  = req.body
+  const { id }  = req.body;
   const tempPlayers = players.map(player => {
     return {
       ...player,
       winsCount: player.id === id ? player.winsCount + 1 : player.winsCount
-    }
-  })
-  players = tempPlayers
-  res.status(200).send(players)
-})
+    };
+  });
+  players = tempPlayers;
+  res.status(200).send(players);
+});
 
 
 /**
@@ -68,9 +68,9 @@ router.post('/increment', (req: Request, res: Response) => {
  */
 
 router.get('/restart', (req: Request, res: Response) => {
-  players = []
-  res.status(200).send(players)
-})
+  players = [];
+  res.status(200).send(players);
+});
 
 
 /**
@@ -83,10 +83,10 @@ router.get('/rematch', (req: Request, res: Response) => {
     return {
       ...player,
       winsCount: 0
-    }
-  }).reverse()
-  players = newPlayers
-  res.status(200).send(players)
-})
+    };
+  }).reverse();
+  players = newPlayers;
+  res.status(200).send(players);
+});
 
 export { router };

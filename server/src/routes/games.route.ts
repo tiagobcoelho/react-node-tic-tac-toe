@@ -12,18 +12,18 @@ type SingleGame = {
   wasWon: boolean;
   wonBy?: {
     winnerId: Player["id"],
-    winnerName: Player["name"]
-  } 
-}
+    winnerName: Player["name"],
+  } ;
+};
 
 export type Game = {
-  isGameChosen: boolean
+  isGameChosen: boolean,
   isMultiple: boolean | null;
-  setsToWin?: number
-  history?: SingleGame[]
-}
+  setsToWin?: number,
+  history?: SingleGame[],
+};
 
-const setsToWin: number[] = [1, 2, 3]
+const setsToWin: number[] = [1, 2, 3];
 
 /**
  *  CURRENT GAME OBJECT (FAKE DB)
@@ -34,8 +34,8 @@ let currentGame: Game = {
   isGameChosen: true,
   isMultiple: false,
   setsToWin: setsToWin[0],
-  history: []
-}
+  history: [],
+};
 
 
 /**
@@ -49,10 +49,10 @@ router.get('/single', (req: Request, res: Response) => {
     isMultiple: false,
     setsToWin: setsToWin[0],
     history: []
-  }
-  currentGame = game
-  res.status(200).send(game)
-})
+  };
+  currentGame = game;
+  res.status(200).send(game);
+});
 
 
 /**
@@ -66,10 +66,10 @@ router.get('/best-of-3', (req: Request, res: Response) => {
     isMultiple: false,
     setsToWin: setsToWin[1],
     history: [],
-  }
-  currentGame = game
-  res.status(200).send(game)
-})
+  };
+  currentGame = game;
+  res.status(200).send(game);
+});
 
 
 /**
@@ -83,10 +83,10 @@ router.get('/best-of-5', (req: Request, res: Response) => {
     isMultiple: true,
     setsToWin: setsToWin[2],
     history: [],
-  }
-  currentGame = game 
-  res.status(200).send(game)
-})
+  };
+  currentGame = game;
+  res.status(200).send(game);
+});
 
 
 /**
@@ -96,14 +96,14 @@ router.get('/best-of-5', (req: Request, res: Response) => {
 
 router.post('/set-history', (req: Request, res: Response) => {
   const winner = req.body;
-  const newHistory = currentGame.history?.length ? [...currentGame.history, winner] : [winner]
+  const newHistory = currentGame.history?.length ? [...currentGame.history, winner] : [winner];
   const newGame = {
     ...currentGame,
     history: newHistory
-  }
-  currentGame = newGame
-  res.status(200).send(newGame)
-})
+  };
+  currentGame = newGame;
+  res.status(200).send(newGame);
+});
 
 /**
  *  RESTART GAME ROUTE - GET (http://localhost:5000/game/restart)
@@ -114,10 +114,10 @@ router.get('/restart', (req: Request, res: Response) => {
   const game = {
     isGameChosen: false,
     isMultiple: false,
-    history: []
-  }
-  currentGame = game 
-  res.status(200).send(game)
-})
+    history: [],
+  };
+  currentGame = game;
+  res.status(200).send(game);
+});
 
 export { router };

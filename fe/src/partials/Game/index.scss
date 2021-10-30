@@ -1,0 +1,36 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+
+  @include breakpoint('md') {
+    width: 60%;
+  }
+
+  .current-player {
+    font-size: 28px;
+    color: $primary-color;
+
+    @include breakpoint('lg') {
+      font-size: 50px;
+    }
+  }
+
+  .board {
+    background-color: $secondary-light-color;
+    border-radius: $border-rounded;
+    padding: 8px;
+    width: fit-content;
+    height: fit-content;
+    margin: 20px auto;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    gap: 8px;
+
+    @include breakpoint('md') {
+      padding: 16px;
+      gap: 16px;
+    }
+  }
+}

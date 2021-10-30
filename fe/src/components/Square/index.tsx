@@ -1,23 +1,47 @@
-import React from 'react';
-import { Player } from '../../redux/players';
-import { SquareData } from '../../partials/Game';
+import React, { useEffect, useState } from 'react';
 
-type SqaureProps = SquareData & {
-  onClick: (playerId: SquareData["value"]) => void
-}
+// SVG imports
+import SvgX from '../SVG/X';
+import SvgO from '../SVG/O';
 
-const Square:React.FC<SqaureProps> = ({ value, isFilled, isX, onClick }) => {
+// Component Props type
+type SqaureProps = {
+  value: null | string,
+  i: number,
+  onClick: (value: number) => void,
+};
 
-  const style = isX ? `squares X` : `squares O`;
+const Square:React.FC<SqaureProps> = ({ value, i, onClick }) => {
 
-  const displayValue = isFilled ? isX  ? "X" : 'O': ''
+  const [size, setSize] = useState<string>('0');
+
+  const isX = value === 'x';
+  const isFilled = value !== null;
+
+  useEffect(() => {
+    const width = window.innerWidth;
+
+    if(width < 480) {
+      setSize('50px');
+    } else {
+      setSize('80px');
+    }
+  }, []);
 
   return (
-    <div>
-      <button className={style} disabled={isFilled} value={value} onClick={() => onClick(value)}>
-        {displayValue}
-      </button>
-    </div>
+    <button 
+      className="square" 
+      disabled={isFilled} 
+      onClick={() => onClick(i)}
+    >
+      {isFilled ? isX ? (
+        <SvgX fontSize={size}/>
+      ) : (
+        <SvgO fontSize={size} />
+      ): (
+        ''
+      )}
+    </button>
   );
 };
 

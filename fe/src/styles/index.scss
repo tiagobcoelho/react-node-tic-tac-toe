@@ -1,0 +1,57 @@
+// Font
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+// Variables & mixins
+@import "variables";
+@import "mixins";
+
+// Components
+@import "../components/Button/index.scss";
+@import "../components/Input/index.scss";
+@import "../components/Square/index.scss";
+@import "../components/GameHistory/index.scss";
+@import "../components/Modal/index.scss";
+
+// Partials
+@import "../partials/WelcomeScreen/index.scss";
+@import "../partials/PlayersSelector/index.scss";
+@import "../partials/GameSelector/index.scss";
+@import "../partials/Game/index.scss";
+
+// global style rules
+* {
+  font-family: Righteous;
+  margin: 0;
+}
+
+// Container styles
+.app-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: $secondary-color;
+  box-sizing: border-box;
+  padding: 60px 0;
+  overflow: auto;
+
+  .section-title {
+    font-size: 24px;
+    color: $primary-color;
+    text-align: center;
+
+    @include breakpoint('md') {
+      font-size: 40px;
+    }
+   
+    @include breakpoint('lg') {
+      font-size: 60px;
+    }
+  }
+}
+
+
+

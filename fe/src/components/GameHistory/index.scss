@@ -1,0 +1,50 @@
+.history-container {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  width: 272px;
+  border-radius: $border-rounded;
+  box-sizing: border-box;
+  background-color: $secondary-light-color;
+
+  @include breakpoint('sm') {
+    width: 424px;
+    padding: 16px;
+  }
+
+  .history-row {
+    display: flex;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    .number-col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $secondary-color;
+      color: $white;
+      font-size: 30px;
+      padding: 8px;
+      margin-right: 8px;
+      width: 40px;
+      border-radius: $border-rounded;
+    }
+    
+    .result-col {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      background-color: $secondary-color;
+      color: $white;
+      flex-grow: 1;
+      padding: 8px;
+      border-radius: $border-rounded;
+    }
+
+    .header {
+      color: $primary-color;
+    }
+  }
+}

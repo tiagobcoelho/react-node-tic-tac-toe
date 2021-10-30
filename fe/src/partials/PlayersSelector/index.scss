@@ -1,0 +1,31 @@
+.players-selector-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 90%;
+
+  @include breakpoint('md') {
+    width: 60%;
+  }
+
+  .player-inputs-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 45%;
+    width: 100%;
+
+    @include breakpoint('lg') {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .input-errors {
+    font-size: 20px;
+    color: $primary-color;
+  }
+}

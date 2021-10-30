@@ -1,0 +1,46 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 100%;
+
+  @include breakpoint('lg') {
+    width: 45%;
+  }
+  
+  .input-label {
+    font-size: 20px;
+    color: $primary-color;
+    margin-left: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .input {
+    padding:16px;
+    height: 30px;
+    background-color: $secondary-light-color;
+    color: $primary-color;
+    border-radius: $border-rounded;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    @include transition;
+
+    &::placeholder {
+      color: $primary-light-color;
+    }
+
+    &:hover {
+      @include shadow;
+    }
+
+    &:focus {
+      background-color: $primary-color;
+      color: $secondary-light-color;
+
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+  }
+}

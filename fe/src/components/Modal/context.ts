@@ -1,19 +1,19 @@
 import React from 'react';
-import { ModalProps } from '.';
+import { ModalProps } from './';
 
 export type ModalContextProps = {
   addModal: (props: ModalProps) => void,
-  removeModal: () => void
-}
+  removeModal: () => void,
+};
 
 export const modalContextDefault = {
   addModal: () => {
-    return
+    return;
   },
   removeModal: () => {
-    return
-  }
-}
+    return;
+  },
+};
 
 export const ModalContext = React.createContext<ModalContextProps>(
   modalContextDefault

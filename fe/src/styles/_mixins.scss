@@ -1,0 +1,25 @@
+// mixin to generate media queries
+@mixin breakpoint(
+  $breakpoint-name,
+  $breakpoints: $responsive-breakpoints
+) {
+  $value : map-get($breakpoints, $breakpoint-name);
+
+  @if($value == 0) {
+    @content;
+  } @else {
+    @media (min-width: $value) {
+      @content;
+    }
+  }
+}
+
+// mixin to add box shadow
+@mixin shadow {
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+// mixin for transitions
+@mixin transition {
+  transition: all .2s;
+}

@@ -1,7 +1,20 @@
+// Colors
 $primary-color: #F9CA33;
+$primary-light-color: #FDF0C4;
 
 $secondary-color: #E94647;
 $secondary-light-color: #EC5B5B;
 $secondary-strong-color: #E73636;
 
 $white: #FFFFFF;
+
+// Breakpoints
+$responsive-breakpoints: (
+  "xs": 0,
+  "sm": 480px,
+  "md": 768px,
+  "lg": 1024px
+);
+
+// Border radius value
+$border-rounded: 16px;

@@ -1,35 +1,54 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+
+// Redux import
+import { setPlayers } from '../../redux/players';
+
+// Component imports
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-import { setPlayers } from '../../redux/players';
 
 
 const PlayersSelector: React.FC = () => {
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [player1, setPlayer1] = useState<string>("");
   const [player2, setPlayer2] = useState<string>("");
-  const [error, setError] = useState<boolean>(false)
+
+  const [error, setError] = useState<string>('');
+
   const handleSubmit = () => {
-    if(player1 === player2) return setError(true)
-    dispatch(setPlayers([player1, player2]))
-  }
+    if(!player1.length || !player2.length) return setError("names can't be blank!");
+    if(player1 === player2) return setError("both players can't have the same name!");
+    dispatch(setPlayers([player1, player2]));
+  };
   
   return (
-    <div>
-      {error && (
-        <p>both players can't have the same name</p>
+    <div className="players-selector-container">
+      <h2 className="section-title">Choose your player's names</h2>
+
+      <div className="player-inputs-container">
+        <Input 
+          onChange={(e) => setPlayer1(e.target.value)} 
+          label="Player 1"
+          placeholder="choose player name"
+        />
+        <Input 
+          onChange={(e) => setPlayer2(e.target.value)} 
+          label="Player 2"
+          placeholder="choose player name"
+        />
+      </div>
+      {error.length > 0 && (
+        <p className="input-errors">{error}</p>
       )}
-      <Input onChange={(e) => setPlayer1(e.target.value)}/>
-      <Input onChange={(e) => setPlayer2(e.target.value)}/>
       <Button skin={'primary'} onClick={handleSubmit}>
         Next
       </Button>
     </div>
-  )
-}
+  );
+};
 
 
 export default PlayersSelector;
