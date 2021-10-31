@@ -1,12 +1,12 @@
 # Tiago Coelho's challenge for Inspire IT
 
-This is my solution to the technical challenge proposed by Inspire.\
+This is my solution to the technical challenge proposed by Inspire.
 
 ## Getting Started
 
 Both in the fe and server directories run 'npm install' to install all the node modules used.\
 Run 'npm run dev' on the server directory to start the server (you should be using node v12.13.0 or higher).\
-Run 'npm start' on the fe directory to start the frontend client.\
+Run 'npm start' on the fe directory to start the frontend client.
 
 ## About the project
 
