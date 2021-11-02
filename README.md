@@ -1,6 +1,6 @@
-# Tiago Coelho's challenge for Inspire IT
+# Tiago Coelho's tic tac toe react/node
 
-This is my solution to the technical challenge proposed by Inspire.
+This is my tic tac toe game built with react and node.
 
 ## Getting Started
 
