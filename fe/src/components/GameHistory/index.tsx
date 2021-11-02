@@ -16,7 +16,7 @@ const GameHistory: React.FC<GameHistoryProps> = ({ history }) => {
         <div className="result-col header">games history</div>
       </div>
       {history.map((game, i) => (
-        <div className="history-row">
+        <div key={i} className="history-row">
           <div className="number-col">{i + 1}</div>
           <div className="result-col">
             {game.wonBy ? `won by ${game.wonBy.winnerName}` : 'ended a tie'}
