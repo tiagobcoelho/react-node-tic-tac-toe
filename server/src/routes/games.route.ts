@@ -18,7 +18,7 @@ type SingleGame = {
 
 export type Game = {
   isGameChosen: boolean,
-  isMultiple: boolean | null;
+  isMultiple: boolean;
   setsToWin?: number,
   history?: SingleGame[],
 };
@@ -26,7 +26,7 @@ export type Game = {
 const setsToWin: number[] = [1, 2, 3];
 
 /**
- *  CURRENT GAME OBJECT (FAKE DB)
+ *  CURRENT GAME OBJECT (STORE GAME DATA)
  * ------------------------------------------------------------------
  */
 
@@ -63,7 +63,7 @@ router.get('/single', (req: Request, res: Response) => {
 router.get('/best-of-3', (req: Request, res: Response) => {
   const game = {
     isGameChosen: true,
-    isMultiple: false,
+    isMultiple: true,
     setsToWin: setsToWin[1],
     history: [],
   };

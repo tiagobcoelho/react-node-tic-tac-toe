@@ -15,7 +15,7 @@ export type Player = {
 
 
 /**
- *  PLAYERS ARRAY (FAKE PLAYERS DB)
+ *  PLAYERS ARRAY (STORE PLAYERS DATA)
  * ------------------------------------------------------------------
  */
 

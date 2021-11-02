@@ -70,7 +70,7 @@ const Game:React.FC = () => {
       };
     };
 
-    if(stepNumber === 9) setTie();
+    if(stepNumber === 9) return setTie();
 
     setStepNumber(state => state + 1);
   };
@@ -89,20 +89,7 @@ const Game:React.FC = () => {
       dispatch(setGameHistory(true, currentWinner));
       setSquares(Array(9).fill(null));
       setStepNumber(1);
-      setPlayersInfo((prevState) => {
-        return prevState.map(player => {
-          return {
-            ...player,
-            isX: player.isX ? false : true
-          }
-        });
-      });
-      setCurrentPlayer(prevState => {
-        let nextPlayer = playersInfo.find(player => player.isX === false);
-        if(!nextPlayer) return prevState;
-        nextPlayer.isX = true;
-        return nextPlayer;
-      })
+      resetPlayers()
     } else {
       // Game won
       addModal({
@@ -113,7 +100,6 @@ const Game:React.FC = () => {
       });
     };
   };
-
 
   // Function to handle Single game tie
   const setTie = () => {   
@@ -134,6 +120,27 @@ const Game:React.FC = () => {
         isFlash: true,
         message: "the game was a tie"
       });
+
+      setStepNumber(1);
+      resetPlayers()
+  };
+  
+  // helper function to change player who is X (and therefore starts the game)
+  const resetPlayers = () => {
+    setPlayersInfo((prevState) => {
+      return prevState.map(player => {
+        return {
+          ...player,
+          isX: player.isX ? false : true
+        }
+      });
+    });
+    setCurrentPlayer(prevState => {
+      let nextPlayer = playersInfo.find(player => player.isX === false);
+      if(!nextPlayer) return prevState;
+      nextPlayer.isX = true;
+      return nextPlayer;
+    });
   };
 
   // Function to trigger game restart

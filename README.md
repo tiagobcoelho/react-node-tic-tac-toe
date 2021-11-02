@@ -13,12 +13,12 @@ Run 'npm start' on the fe directory to start the frontend client.
 ### `frontend`
 
 I used a create-react-app typescript template to generate the initial boilerplate.\
-For state management I used Redux (for global state), react useState hooks (for local state) and context(to handle modals).\
+For state management I used Redux (for global state), react useState hooks (for local state) and context (to handle modals).\
 For styles I used Sass.
 
 ### `backend`
 
-Built a simple Express server using Node with typescript. As the connection to a database would be a bit of an overkill for a project this size I just used some arrays on the server app to act as 'fake databases'.
+Built a simple Express server using Node with typescript. As the connection to a database would be a bit of an overkill for a project this size I just used some arrays on the server app to store data temporarly.
 
 ### `Design`
 
