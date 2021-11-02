@@ -27,7 +27,7 @@ const Modal: React.FC<ModalProps> = ({ children}) => {
   }
 
   useEffect(() => {
-    if(modal?.isFlash) setTimeout(removeModal, 2000);
+    if(modal?.isFlash) setTimeout(removeModal, 1000);
   }, [modal]);
   
   const handleRestart = () => {

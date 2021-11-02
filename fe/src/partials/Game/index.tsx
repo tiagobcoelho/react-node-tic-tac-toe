@@ -84,6 +84,11 @@ const Game:React.FC = () => {
     if(!currentWinner || !game.setsToWin) return;
     
     if(currentWinner.winsCount + 1 < game.setsToWin) {
+      // show message with the winner of the current single game
+      addModal({
+        message: `${currentWinner.name} won this one!`,
+        isFlash: true,
+      });
       // Overall game is not finished
       dispatch(incrementWins(id));
       dispatch(setGameHistory(true, currentWinner));
